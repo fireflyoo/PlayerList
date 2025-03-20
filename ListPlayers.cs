@@ -45,9 +45,11 @@ namespace GetOfflinePlayersHealthPlugin
             }
 
             // Display the health information
-            foreach (var player in offlinePlayersHealth)
+	    var index=1;
+            foreach (var player in offlinePlayersHealth.OrderByDescending(player=>player.MaxHealth))
             {
-                args.Player.SendSuccessMessage($"Player: {player.Name}, Health: {player.Health}/{player.MaxHealth}");
+                args.Player.SendSuccessMessage($"{index}. {player.Name}, Health: {player.Health}/{player.MaxHealth}");
+		index++;
             }
         }
     }
